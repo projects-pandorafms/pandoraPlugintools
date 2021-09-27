@@ -85,6 +85,19 @@ to get epoch time (utimestamp)
 
 * * *
 
+**parse\_configuration**(file='/etc/pandora/pandora\_server.conf', separator=' ')
+
+Parse configuration. Reads configuration file and stores its data as dict.
+ 
+Args:
+   + file (str): configuration file path. Defaults to "/etc/pandora/pandora\_server.conf". 
+   + separator (str, optional): Separator for option and value. Defaults to " ".
+ 
+Returns:
+   + dict: containing all keys and values from file.
+
+* * *
+
 **print\_agent**(agent, modules, data\_dir='/var/spool/pandora/data\_in/', log\_modules=None, print\_flag=None)
 
 Prints agent XML. Requires agent conf (dict) and modules (list) as arguments.  
