@@ -4,7 +4,7 @@ import os
 # Setting up
 setup(
     name="pandoraPlugintools",
-    version="0.0.2",
+    version="0.0.3",
     author="PandoraFMS projects department",
     author_email="<projects@pandorafms.com>",
     description="A pluguin tool set of functions for pandorafms",

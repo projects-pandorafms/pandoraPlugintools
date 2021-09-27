@@ -13,15 +13,6 @@
 # -*- coding: utf-8 -*-
 ## IMPORTS
 
-# equivalente a LWP::UserAgent;
-# equivalente a File::Copy;
-# equivalente a POSIX qw(strftime setsid floor);
-# equivalente a MIME::Base64;
-# equivalente a JSON qw(decode_json encode_json);
-#
-#import argparse
-#import configparse
-#import math #math.floor() para numeros con decimales, int() para numeros sin decimales
 #import pysnmp 
 #import  pysnmp.hlapi
 #from os import name as ostype
@@ -376,6 +367,32 @@ def tentacle_xml(file, tentacle_ops,tentacle_path='', debug=0):
 #########################################################################################
 # Configuration file parser
 #########################################################################################
+
+def parse_configuration(file="/etc/pandora/pandora_server.conf", separator=" "):
+    """
+    Parse configuration. Reads configuration file and stores its data as dict.
+
+    Args:
+       + file (str): configuration file path. Defaults to "/etc/pandora/pandora_server.conf". \n
+       + separator (str, optional): Separator for option and value. Defaults to " ".
+
+    Returns:
+       + dict: containing all keys and values from file.
+    """
+    config = {}
+    try:
+        with open (file, "r") as conf:
+            lines = conf.read().splitlines()
+            for line in lines:
+                if line.startswith("#") or len(line) < 1 :
+                    pass
+                else:
+                    option, value = line.strip().split(separator)
+                    config[option.strip()] = value.strip()
+
+        return config
+    except Exception as e:
+        print (f"{type(e).__name__}: {e}")
 
 
 
