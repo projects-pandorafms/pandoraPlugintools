@@ -114,8 +114,8 @@ class debug_dict:
 #########################################################################################
 def print_agent(agent, modules, data_dir="/var/spool/pandora/data_in/", log_modules= None, print_flag = None):
     """Prints agent XML. Requires agent conf (dict) and modules (list) as arguments.
-    + Use print_flag to show modules' XML in STDOUT.
-    + Returns a tuple (xml, data_file).
+    - Use print_flag to show modules' XML in STDOUT.
+    - Returns a tuple (xml, data_file).
     """
     data_file=None
 
@@ -146,9 +146,9 @@ def print_agent(agent, modules, data_dir="/var/spool/pandora/data_in/", log_modu
 #########################################################################################
 def print_module(module, print_flag=None):
     """Returns module in XML format. Accepts only {dict}.\n
-    + Only works with one module at a time: otherwise iteration is needed.
-    + Module "value" field accepts str type or [list] for datalists.
-    + Use print_flag to show modules' XML in STDOUT.
+    - Only works with one module at a time: otherwise iteration is needed.
+    - Module "value" field accepts str type or [list] for datalists.
+    - Use print_flag to show modules' XML in STDOUT.
     """
     data = dict(module)
     module_xml = ("<module>\n"
@@ -267,9 +267,9 @@ def print_module(module, print_flag=None):
 
 def print_log_module(module, print_flag = None):
     """Returns log module in XML format. Accepts only {dict}.\n
-    + Only works with one module at a time: otherwise iteration is needed.
-    + Module "value" field accepts str type.
-    + Use not_print_flag to avoid printing the XML (only populates variables).
+    - Only works with one module at a time: otherwise iteration is needed.
+    - Module "value" field accepts str type.
+    - Use not_print_flag to avoid printing the XML (only populates variables).
     """
     data = dict(module)
     module_xml = ("<log_module>\n"
@@ -290,7 +290,11 @@ def print_log_module(module, print_flag = None):
 #########################################################################################
 
 def write_xml(xml, agent_name, data_dir="/var/spool/pandora/data_in/"):
-    """Creates a agent .data file in the specified data_dir folder"""
+    """Creates a agent .data file in the specified data_dir folder\n
+    Args:
+    - xml (str): XML string to be written in the file.
+    - agent_name (str): agent name for the xml and file name.
+    - data_dir (str): folder in which the file will be created."""
     Utime = datetime.now().strftime('%s')
     data_file = "%s%s.%s.data" %(str(data_dir),agent_name,str(Utime))
     try:
@@ -308,11 +312,11 @@ def write_xml(xml, agent_name, data_dir="/var/spool/pandora/data_in/"):
 #########################################################################################
 def tentacle_xml(file, tentacle_ops,tentacle_path='', debug=0):
     """Sends file using tentacle protocol\n
-    + Only works with one file at time.
-    + file variable needs full file path.
-    + tentacle_opts should be a dict with tentacle options (address [password] [port]).
-    + tentacle_path allows to define a custom path for tentacle client in case is not in sys path).
-    + if debug is enabled, the data file will not be removed after being sent.
+    - Only works with one file at time.
+    - file variable needs full file path.
+    - tentacle_opts should be a dict with tentacle options (address [password] [port]).
+    - tentacle_path allows to define a custom path for tentacle client in case is not in sys path).
+    - if debug is enabled, the data file will not be removed after being sent.
 
     Returns 0 for OK and 1 for errors.
     """
@@ -373,11 +377,11 @@ def parse_configuration(file="/etc/pandora/pandora_server.conf", separator=" "):
     Parse configuration. Reads configuration file and stores its data as dict.
 
     Args:
-       + file (str): configuration file path. Defaults to "/etc/pandora/pandora_server.conf". \n
-       + separator (str, optional): Separator for option and value. Defaults to " ".
+    - file (str): configuration file path. Defaults to "/etc/pandora/pandora_server.conf". \n
+    - separator (str, optional): Separator for option and value. Defaults to " ".
 
     Returns:
-       + dict: containing all keys and values from file.
+    - dict: containing all keys and values from file.
     """
     config = {}
     try:
@@ -404,10 +408,10 @@ def auth_call(session, authtype, user, passw):
     """Authentication for url request. Requires request.sessions.Session() object.
 
     Args:
-        session (object): request Session() object.
-        authtype (str): 'ntlm', 'basic' or 'digest'.
-        user (str): auth user.
-        passw (str): auth password.
+    - session (object): request Session() object.
+    - authtype (str): 'ntlm', 'basic' or 'digest'.
+    - user (str): auth user.
+    - passw (str): auth password.
     """
     if authtype == 'ntlm':
         session.auth = HttpNtlmAuth(user, passw)
@@ -420,13 +424,13 @@ def call_url(url, authtype, user, passw, time_out):
     """Call URL. Uses request module to get url contents.
 
     Args:
-        url (str): URL
-        authtype (str): ntlm', 'basic', 'digest'. Optional.
-        user (str): auth user. Optional.
-        passw (str): auth password. Optional.
+    - url (str): URL
+    - authtype (str): ntlm', 'basic', 'digest'. Optional.
+    - user (str): auth user. Optional.
+    - passw (str): auth password. Optional.
 
     Returns:
-        str: call output
+    - str: call output
     """
     # using with so we make sure the session is closed even when exceptions are encountered
     with Session() as session:
