@@ -49,10 +49,10 @@ list of weak references to the object (if defined)
 Authentication for url request. Requires request.sessions.Session() [object](builtins.html#object).  
    
 Args:  
-    session ([object](builtins.html#object)): request Session() [object](builtins.html#object).  
-    authtype (str): 'ntlm', 'basic' or 'digest'.  
-    user (str): auth user.  
-    passw (str): auth password.
+- session ([object](builtins.html#object)): request Session() [object](builtins.html#object).  
+- authtype (str): 'ntlm', 'basic' or 'digest'.  
+- user (str): auth user.  
+- passw (str): auth password.
 
 * * *
 
@@ -61,13 +61,13 @@ Args:
 Call URL. Uses request module to get url contents.  
    
 Args:  
-    url (str): URL  
-    authtype (str): ntlm', 'basic', 'digest'. Optional.  
-    user (str): auth user. Optional.  
-    passw (str): auth password. Optional.  
-   
+- url (str): URL  
+- authtype (str): ntlm', 'basic', 'digest'. Optional.  
+- user (str): auth user. Optional.  
+- passw (str): auth password. Optional.  
+
 Returns:  
-    str: call output
+- str: call output
     
 * * *
 
@@ -90,19 +90,19 @@ to get epoch time (utimestamp)
 Parse configuration. Reads configuration file and stores its data as dict.
  
 Args:
-   + file (str): configuration file path. Defaults to "/etc/pandora/pandora\_server.conf". 
-   + separator (str, optional): Separator for option and value. Defaults to " ".
+- file (str): configuration file path. Defaults to "/etc/pandora/pandora\_server.conf". 
+- separator (str, optional): Separator for option and value. Defaults to " ".
  
 Returns:
-   + dict: containing all keys and values from file.
+- dict: containing all keys and values from file.
 
 * * *
 
 **print\_agent**(agent, modules, data\_dir='/var/spool/pandora/data\_in/', log\_modules=None, print\_flag=None)
 
 Prints agent XML. Requires agent conf (dict) and modules (list) as arguments.  
-+ Use print\_flag to show modules' XML in STDOUT.  
-+ Returns a tuple (xml, data\_file).
+- Use print\_flag to show modules' XML in STDOUT.  
+- Returns a tuple (xml, data\_file).
 
 * * *
 
@@ -110,9 +110,9 @@ Prints agent XML. Requires agent conf (dict) and modules (list) as ar
 
 Returns log module in XML format. Accepts only {dict}.  
    
-+ Only works with one module at a time: otherwise iteration is needed.  
-+ Module "value" field accepts str type.  
-+ Use not\_print\_flag to avoid printing the XML (only populates variables).
+- Only works with one module at a time: otherwise iteration is needed.  
+- Module "value" field accepts str type.  
+- Use not\_print\_flag to avoid printing the XML (only populates variables).
 
 * * *
 
@@ -120,9 +120,9 @@ Returns log module in XML format. Accepts only {dict}.
 
 Returns module in XML format. Accepts only {dict}.  
    
-+ Only works with one module at a time: otherwise iteration is needed.  
-+ Module "value" field accepts str type or \[list\] for datalists.  
-+ Use print\_flag to show modules' XML in STDOUT.
+- Only works with one module at a time: otherwise iteration is needed.  
+- Module "value" field accepts str type or \[list\] for datalists.  
+- Use print\_flag to show modules' XML in STDOUT.
 
 * * *
 
@@ -130,11 +130,11 @@ Returns module in XML format. Accepts only {dict}.
 
 Sends file using tentacle protocol  
    
-+ Only works with one file at time.  
-+ file variable needs full file path.  
-+ tentacle\_opts should be a dict with tentacle options (address \[password\] \[port\]).  
-+ tentacle\_path allows to define a custom path for tentacle client in case is not in sys path).  
-+ if debug is enabled, the data file will not be removed after being sent.  
+- Only works with one file at time.  
+- file variable needs full file path.  
+- tentacle\_opts should be a dict with tentacle options (address \[password\] \[port\]).  
+- tentacle\_path allows to define a custom path for tentacle client in case is not in sys path).  
+- if debug is enabled, the data file will not be removed after being sent.  
    
 Returns 0 for OK and 1 for errors.
 
@@ -142,3 +142,11 @@ Returns 0 for OK and 1 for errors.
 
 **write\_xml**(xml, agent\_name, data\_dir='/var/spool/pandora/data\_in/')
 
+Creates a agent .data file in the specified data_dir folder.
+
+Args:
+- xml (str): XML string to be written in the file.
+- agent_name (str): agent name for the xml and file name.
+- data_dir (str): folder in which the file will be created.
+
+* * *
