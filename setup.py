@@ -1,5 +1,9 @@
 from setuptools import setup, find_packages
 import os
+import sys
+
+with open('README.md', mode='r', encoding='utf-8') as f:
+    readme = f.read()
 
 # Setting up
 setup(
@@ -8,6 +12,8 @@ setup(
     author="PandoraFMS projects department",
     author_email="<projects@pandorafms.com>",
     description="A pluguin tool set of functions for pandorafms",
+    long_description=readme,
+    long_description_content_type='text/markdown',
     url = 'https://github.com/projects-pandorafms/pandoraPlugintools',
     packages=find_packages(),
     zip_safe=False,
