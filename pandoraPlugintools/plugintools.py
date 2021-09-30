@@ -21,7 +21,6 @@ import sys
 import os
 from datetime import datetime
 from subprocess import *
-import psutil
 from requests_ntlm import HttpNtlmAuth
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
@@ -45,11 +44,17 @@ class Agent:
 # OS check
 #########################################################################################
 
-WINDOWS = psutil.WINDOWS
-LINUX = psutil.LINUX
-SUNOS = psutil.SUNOS
-FREEBSD = psutil.FREEBSD
-AIX = psutil.AIX
+POSIX = os.name == "posix"
+WINDOWS = os.name == "nt"
+LINUX = sys.platform.startswith("linux")
+MACOS = sys.platform.startswith("darwin")
+OSX = MACOS  # deprecated alias
+FREEBSD = sys.platform.startswith("freebsd")
+OPENBSD = sys.platform.startswith("openbsd")
+NETBSD = sys.platform.startswith("netbsd")
+BSD = FREEBSD or OPENBSD or NETBSD
+SUNOS = sys.platform.startswith(("sunos", "solaris"))
+AIX = sys.platform.startswith("aix")
 
 #########################################################################################
 # Timedate class
