@@ -550,3 +550,13 @@ if __name__ == '__main__':
     # Send datafile file 
     if test_agent[1] is not None:
         tentacle_xml(test_agent[1], tentacle_conf, debug=0)
+
+    # test example translate macros
+
+    macros = {
+        '_test_': 'Prueba',
+        '_agent_name_':'pandora_agent'
+    }
+
+    string = '_test_ macro translator to agente _agent_name_'
+    print (translate_macros(macros, string))
