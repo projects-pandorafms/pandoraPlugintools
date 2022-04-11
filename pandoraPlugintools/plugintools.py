@@ -403,7 +403,39 @@ def parse_configuration(file="/etc/pandora/pandora_server.conf", separator=" "):
     except Exception as e:
         print (f"{type(e).__name__}: {e}")
 
+#########################################################################################
+# csv file parser
+#########################################################################################
+def parse_csv_file(file, separator=';', count_parameters=None, debug=False) -> list:
+    """
+    Parse csv configuration. Reads configuration file and stores its data in an array.
 
+    Args:
+    - file (str): configuration csv file path. \n
+    - separator (str, optional): Separator for option and value. Defaults to ";".
+    - coun_parameters (int): min number of parameters each line shold have. Default None
+    - debug: print errors on lines
+
+    Returns:
+    - arr: containing list whit all csv parameters.
+    """
+    csv_arr = []
+    try:
+        with open (file, "r") as conf:
+            lines = conf.read().splitlines()
+            for line in lines:
+                if line.startswith("#") or len(line) < 1 :
+                    continue
+                else:
+                    value = line.strip().split(separator)
+                    if count_parameters is None or len(value) >= count_parameters:
+                        csv_arr.append(value)
+                    elif debug==True: 
+                        print(f'Csv line: {line} doesnt match minimun parameter defined: {count_parameters}',file=sys.stderr)
+
+        return csv_arr
+    except Exception as e:
+        print (f"{type(e).__name__}: {e}")
 
 #########################################################################################
 # URL calls
@@ -463,9 +495,17 @@ def call_url(url, authtype, user, passw, time_out):
 
 
 #########################################################################################
-# Load required modules.  (No se si hara falta)
+# Translate macro
 #########################################################################################
+def translate_macros(macro_dic: dict, data: str)  -> str:
+    """Expects a macro dictionary key:value (macro_name:macro_value) 
+    and a string to replace macro. \n
+    It will replace the macro_name for the macro_value in any string.
+    """
+    for macro_name, macro_value in macro_dic.items():
+        data = data.replace(macro_name, macro_value) 
 
+    return data
 
 #########################################################################################
 # TEST

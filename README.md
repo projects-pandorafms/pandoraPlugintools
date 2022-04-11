@@ -150,3 +150,30 @@ Args:
 - data_dir (str): folder in which the file will be created.
 
 * * *
+
+* * *
+
+**translate\_macros**(macro\_dic: dict, data: str)
+
+Expects a macro dictionary key:value (macro\_name:macro\_value) 
+and a string to replace macro. \n
+It will replace the macro_name for the macro_value in any string.
+
+* * *
+
+* * *
+
+**parse\_csv_file**(file, separator=';', count\_parameters=None, debug=False) -> list:
+    
+Parse csv configuration. Reads configuration file and stores its data in an array.
+
+Args:
+- file (str): configuration csv file path. \n
+- separator (str, optional): Separator for option and value. Defaults to ";".
+- coun_parameters (int): min number of parameters each line shold have. Default None
+- debug: print errors on lines
+
+Returns:
+- arr: containing list whit all csv parameters.
+
+* * *
