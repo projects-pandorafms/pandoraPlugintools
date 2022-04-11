@@ -2,12 +2,8 @@
 #
 # Pandora FMS Plugin functions library for Python
 #
-#  (c) A. Kevin Rojas <kevin.rojas@pandorafms.com>
-# 
-# Requirements:
-#  Library              Centos package
-#  -------              --------------
-#  LWP::UserAgent       perl-libwww-perl ??????????????????????????
+#  (c)  A. Kevin Rojas <kevin.rojas@pandorafms.com>
+#       Rafael Ameijeiras <rafael.ameijeiras@pandorafms.com>
 # 
 ###################################################################################
 # -*- coding: utf-8 -*-
