@@ -37,7 +37,7 @@ macros = {
 }
 
 string = '_test_ macro translator to agent _agent_name_'
-print (translate_macros(macros, string))
+print (pt.translate_macros(macros, string))
 
 # Print Agent
 test_agent = pt.print_agent(agent_data, modules,data_dir='/tmp/', print_flag=0)
