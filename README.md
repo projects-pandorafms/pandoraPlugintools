@@ -1,6 +1,62 @@
 # Python: module plugintools for PandoraFMS Developers
 
-## Modules
+## Example
+
+
+``` python
+import pandoraPlugintools as pt
+
+# Agent example
+agent_data = {
+        "agent_name"  : "agentname",
+        "agent_alias" : "alias",
+        "parent_agent_name" : "parent agent",
+        "description" : "agente de pruebas",
+        "version"     : "v756",
+        "os_name"     : "Windows",
+        "os_version"  : "10",
+        "timestamp"   : datetime.today().strftime('%Y/%m/%d %H:%M:%S'),
+        "address"     : "127.0.0.1",
+        "group"       : "Servers",
+        "interval"    : "300",
+}
+modules = [{
+        "name"      :   "test1",
+        "type"      :   "generic_data",
+        "value"     :   12344
+},{
+        "name"      :   "test2",
+        "type"      :   "generic_data_string",
+        "value"     :   "test"
+}]
+
+# test example translate macros
+macros = {
+    '_test_': 'Prueba',
+    '_agent_name_':'pandora_agent'
+}
+
+string = '_test_ macro translator to agent _agent_name_'
+print (translate_macros(macros, string))
+
+# Print Agent
+test_agent = pt.print_agent(agent_data, modules,data_dir='/tmp/', print_flag=0)
+
+# Define tentacle conf 
+tentacle_conf = {
+    'address' : 'server.pandora.com',
+    'port' : '41121',
+    #'password' : 'pass'
+}
+
+# Send datafile file 
+if test_agent[1] is not None:
+    pt.tentacle_xml(test_agent[1], tentacle_conf, debug=0)
+
+```
+
+
+## Dependencies
 
 * [json](json.html)  
 * [os](os.html)  
@@ -151,15 +207,11 @@ Args:
 
 * * *
 
-* * *
-
 **translate\_macros**(macro\_dic: dict, data: str)
 
 Expects a macro dictionary key:value (macro\_name:macro\_value) 
 and a string to replace macro. \n
 It will replace the macro_name for the macro_value in any string.
-
-* * *
 
 * * *
 
@@ -174,6 +226,5 @@ Args:
 - debug: print errors on lines
 
 Returns:
-- arr: containing list whit all csv parameters.
-
+- List: containing a list for each csv line.
 * * *

@@ -9,9 +9,6 @@
 # -*- coding: utf-8 -*-
 ## IMPORTS
 
-#import pysnmp 
-#import  pysnmp.hlapi
-#from os import name as ostype
 import json 
 import sys
 import os
@@ -21,8 +18,6 @@ from requests_ntlm import HttpNtlmAuth
 from requests.auth import HTTPBasicAuth
 from requests.auth import HTTPDigestAuth
 from requests.sessions import Session
-
-## IMPORTS
 
 #########################################################################################
 # Agent class
@@ -297,7 +292,7 @@ def write_xml(xml, agent_name, data_dir="/var/spool/pandora/data_in/"):
     - agent_name (str): agent name for the xml and file name.
     - data_dir (str): folder in which the file will be created."""
     Utime = datetime.now().strftime('%s')
-    data_file = "%s%s.%s.data" %(str(data_dir),agent_name,str(Utime))
+    data_file = "%s/%s.%s.data" %(str(data_dir),agent_name,str(Utime))
     try:
         with open(data_file, 'x') as data:
             data.write(xml)
@@ -413,7 +408,7 @@ def parse_csv_file(file, separator=';', count_parameters=None, debug=False) -> l
     - debug: print errors on lines
 
     Returns:
-    - arr: containing list whit all csv parameters.
+    - List: containing a list for of values for each csv line.
     """
     csv_arr = []
     try:
@@ -432,6 +427,7 @@ def parse_csv_file(file, separator=';', count_parameters=None, debug=False) -> l
         return csv_arr
     except Exception as e:
         print (f"{type(e).__name__}: {e}")
+        return 1
 
 #########################################################################################
 # URL calls
