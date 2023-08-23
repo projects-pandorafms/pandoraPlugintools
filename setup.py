@@ -17,7 +17,7 @@ setup(
     url = 'https://github.com/projects-pandorafms/pandoraPlugintools',
     packages=find_packages(),
     zip_safe=False,
-    install_requires=['datetime', 'cryptography==3', 'requests', 'requests_ntlm','pycrypto==2.6.1'.'easysnmp==0.2.6','pysnmp==4.4.12'],
+    install_requires=['datetime', 'cryptography==3', 'requests', 'requests_ntlm','pycrypto==2.6.1','easysnmp==0.2.6','pysnmp==4.4.12'],
     keywords=['python', 'pandora', 'pandorafms', 'plugintool', 'plugintools'],
     classifiers=[
         "Intended Audience :: Developers",
