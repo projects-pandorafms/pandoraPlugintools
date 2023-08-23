@@ -7,31 +7,44 @@ pandoraPluginTools is a library that aims to help the creation of scripts and th
 The package includes the following modules. Each one has different functions that facilitate and automate the data integration in Pandora FMS: 
 
 **general**
+
 Module containing general purpose functions, useful in the creation of plugins for PandoraFMS.
 
 **threads**
+
 Module containing threading purpose functions, useful to run parallel functions.
 
 **agents**
+
 Module that contains functions oriented to the creation of Pandora FMS agents
 
 **modules**
+
 Module that contains functions oriented to the creation of Pandora FMS modules.
 
 **transfer**
+
 Module containing functions oriented to file transfer and data sending to Pandora FMS server.
 
 **discovery**
+
 Module containing functions oriented to the creation of Pandora FMS discovery plugins.
 
 **http**
+
 Module containing functions oriented to HTTP API calls.
 
 **snmp**
 
+Module containing functions oriented to calls to snmp operations.
+
 **encryption**
 
+Module containing encryption oriented functions.
 
+**output**
+
+Module containing functions oriented to output and return data.
 
 ## Example 
 
@@ -88,3 +101,6 @@ The package has the following dependencies:
 - subprocess.Popen
 - sys
 - threading.Thread
+- pycrypto
+- easysnmp
+- pysnmp
