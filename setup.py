@@ -8,7 +8,7 @@ with open('README.md', mode='r', encoding='utf-8') as f:
 # Setting up
 setup(
     name="pandoraPlugintools",
-    version="1.0.5",
+    version="1.0.6",
     author="PandoraFMS projects department",
     author_email="<projects@pandorafms.com>",
     description="A plugin tool set of functions for pandorafms",
