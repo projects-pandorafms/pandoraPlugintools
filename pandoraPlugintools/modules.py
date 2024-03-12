@@ -34,7 +34,9 @@ def init_module(
     module = {
         "name"                  : None,
         "type"                  : "generic_data_string",
+        "data"                  : "0",
         "value"                 : "0",
+        "description"           : "",
         "desc"                  : "",
         "unit"                  : "",
         "interval"              : "",
@@ -76,6 +78,7 @@ def init_module(
         "ff_timeout"            : "",
         "each_ff"               : "",
         "module_parent_unlink"  : "",
+        "extra_data"            : "",
         "alert"                 : []
     }
 
@@ -108,6 +111,13 @@ def print_module(
 
     if module is not None:
         data = dict(module)
+
+        if "description" in data:
+            data["desc"] = data["description"]
+
+        if "data" in data:
+            data["value"] = data["data"]
+
         module_xml = ("<module>\n"
                       "\t<name><![CDATA[" + str(data["name"]) + "]]></name>\n"
                       "\t<type>" + str(data["type"]) + "</type>\n"
@@ -251,7 +261,10 @@ def print_module(
         
         if "module_parent_unlink" in data and len(str(data["module_parent_unlink"]).strip()) > 0:
             module_xml += "\t<module_parent_unlink><![CDATA[" + str(data["module_parent_unlink"]) + "]]></module_parent_unlink>\n"
-        
+
+        if "extra_data" in data:
+            module_xml += "\t<extra_data><![CDATA[" + str(data["extra_data"]) + "]]></extra_data>\n"
+
         if "alert" in data:
             for alert in data["alert"]:
                 if len(str(alert).strip()) > 0:
@@ -328,3 +341,4 @@ def print_log_module(
         print_stdout(module_xml)
 
     return module_xml
+
