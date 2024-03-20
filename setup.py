@@ -8,7 +8,7 @@ with open('README.md', mode='r', encoding='utf-8') as f:
 # Setting up
 setup(
     name="pandoraPlugintools",
-    version="1.0.8",
+    version="1.0.9",
     author="PandoraFMS projects department",
     author_email="<projects@pandorafms.com>",
     description="A plugin tool set of functions for pandorafms",
@@ -17,7 +17,7 @@ setup(
     url = 'https://github.com/projects-pandorafms/pandoraPlugintools',
     packages=find_packages(),
     zip_safe=False,
-    install_requires=['datetime', 'cryptography>=3', 'requests', 'requests_ntlm','pycrypto>=2.6.1','pysnmp>=4.4.12'],
+    install_requires=['datetime', 'cryptography>=3', 'requests', 'requests_ntlm','pycrypto>=2.6.1','pysnmp>=4.4.12','pycryptodome'],
     keywords=['python', 'pandora', 'pandorafms', 'plugintool', 'plugintools'],
     classifiers=[
         "Intended Audience :: Developers",
