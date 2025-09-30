@@ -1,6 +1,7 @@
 import sys
 from datetime import datetime
 import hashlib
+import base64
 
 ####
 # Define some global variables
@@ -650,3 +651,31 @@ def parse_bool(
         return bool(var)
     except:
         return False
+
+####
+# Return base64 string.
+#########################################################################################
+
+def encode_string(input_string: str) -> str:
+    """
+        method to convert string to base64 encoded string
+        Args:
+            input_string (str): string to encode
+        Returns:
+            str: base64 encoded string
+    """
+    return base64.b64encode(input_string.encode("utf-8")).decode('utf-8')
+
+####
+# Return decode base64 string.
+#########################################################################################
+
+def decode_string(base_string) -> str:
+    """
+        method to convert base64 encoded string to string
+        Args:
+            base_string (str): string to decode
+        Returns:
+            str: decoded string
+    """
+    return base64.b64decode(base_string).decode('utf-8')
