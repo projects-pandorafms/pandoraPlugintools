@@ -365,6 +365,7 @@ def print_agent(
         agent: dict = None, 
         modules: list = [],
         log_modules: list = [], 
+        log_encoding: str = False,
         print_flag: bool = False
     ) -> str:
     """
@@ -374,6 +375,7 @@ def print_agent(
         agent (dict): A dictionary containing agent configuration.
         modules (list): A list of dictionaries representing modules.
         log_modules (list): A list of dictionaries representing log modules.
+        log_encoding (str): The encoding format used when printing log modules
         print_flag (bool): A flag indicating whether to print the XML representation.
 
     Returns:
@@ -398,7 +400,7 @@ def print_agent(
             xml += str(modules_xml)
         
         for log_module in log_modules:
-            modules_xml = print_log_module(log_module)
+            modules_xml = print_log_module(log_module,encoding=log_encoding)
             xml += str(modules_xml)
         
         xml += "</agent_data>"

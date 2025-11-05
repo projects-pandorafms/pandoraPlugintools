@@ -318,6 +318,7 @@ def print_log_module(
 
     Args:
         module (dict, optional): Dictionary representing the log module. Defaults to None.
+        encoding (str, optional): Encoding format used for the log module.
         print_flag (bool, optional): Flag to indicate whether to print the XML. Defaults to False.
 
     Returns:
