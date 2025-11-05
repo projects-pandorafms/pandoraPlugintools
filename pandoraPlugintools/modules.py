@@ -305,10 +305,10 @@ def init_log_module(
 ####
 # Returns log module in XML format.  Accepts only {dict}
 #########################################################################################
-
 def print_log_module(
         module: dict = None,
-        print_flag: bool = False
+        encoding: str = False,
+        print_flag: bool = False,
     ) -> str:
     """
     Returns log module in XML format. Accepts only {dict}.
@@ -334,7 +334,10 @@ def print_log_module(
                       "\t<source><![CDATA[" + str(data["source"]) + "]]></source>\n"
                       "\t<data>\"" + str(data["value"]) + "\"</data>\n"
                      )
-        
+
+        if encoding:
+            module_xml += "\t<encoding>" + str(encoding) + "</encoding>\n"
+
         module_xml += "</log_module>\n"
 
     if print_flag:
