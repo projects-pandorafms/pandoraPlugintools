@@ -342,7 +342,7 @@ def init_agent(
         "agent_alias"       : "",
         "parent_agent_name" : "",
         "description"       : "",
-        "version"           : "",
+        "version"           : None,
         "os_name"           : "",
         "os_version"        : "",
         "timestamp"         : now(),
@@ -391,7 +391,8 @@ def print_agent(
         header = "<?xml version='1.0' encoding='UTF-8'?>\n"
         header += "<agent_data"
         for dato in agent:
-            header += " " + str(dato) + "='" + str(agent[dato]) + "'"
+            if agent[dato] is not None
+                header += " " + str(dato) + "='" + str(agent[dato]) + "'"
         header += ">\n"
         xml = header
         
